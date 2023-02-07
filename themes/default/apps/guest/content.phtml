@@ -1,0 +1,139 @@
+<div class="welcome-page" data-app="guest">
+	<div class="welcome-page__body">
+		<div class="row justify-content-center">
+			<div class="col-xxl-9 col-xl-10 col-12">
+				<div class="row welcome-page__row align-items-center">
+					<div class="col-xxl-8 col-xl-7 col-12 welcome-page__lp-wrapper">
+						<div class="welcome-page__lp">
+							<div class="welcome-page__lp-header">
+								<div class="welcome-logo">
+									<a href="<?php echo cl_link('/'); ?>">
+										<img src="{%config site_logo%}" alt="Logo">
+									</a>
+								</div>
+								<div class="welcome-title">
+									<?php echo cl_translate("Welcome to {@name@}!", array('name' => $cl['config']['name'])); ?>
+								</div>
+								<div class="welcome-text">
+									<?php echo cl_translate("__welcome_text__"); ?>
+								</div>
+							</div>
+
+							<div class="welcome-page__lp-body">
+								<div class="welcome-features">
+									<div class="row align-items-sretch">
+										<div class="col-4">
+											<div class="welcome-features__li welcome-features__li_1">
+												<div class="icon">
+													<img src="<?php echo cl_link(cl_strf("themes/%s/statics/img/memojies/img-1.png", $cl["config"]["theme"])); ?>" alt="IMG">
+												</div>
+												<div class="text">
+													<h4>
+														<?php echo cl_translate("Explore"); ?>
+													</h4>
+													<p>
+														<?php echo cl_translate("Be the first to know about the hottest events"); ?>
+													</p>
+												</div>
+											</div>
+										</div>
+										<div class="col-4">
+											<div class="welcome-features__li welcome-features__li_2">
+												<div class="icon">
+													<img src="<?php echo cl_link(cl_strf("themes/%s/statics/img/memojies/img-2.png", $cl["config"]["theme"])); ?>" alt="IMG">
+												</div>
+												<div class="text">
+													<h4>
+														<?php echo cl_translate("Like"); ?>
+													</h4>
+													<p>
+														<?php echo cl_translate("Like posts, image, videos & share"); ?>
+													</p>
+												</div>
+											</div>
+										</div>
+										<div class="col-4">
+											<div class="welcome-features__li welcome-features__li_3">
+												<div class="icon">
+													<img src="<?php echo cl_link(cl_strf("themes/%s/statics/img/memojies/img-3.png", $cl["config"]["theme"])); ?>" alt="IMG">
+												</div>
+												<div class="text">
+													<h4>
+														<?php echo cl_translate("Follow"); ?>
+													</h4>
+													<p>
+														<?php echo cl_translate("Follow your interests and get followers"); ?>
+													</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<?php if (not_empty($cl['follow_suggestion'])): ?>
+									<div class="welcome-members">
+										<div class="welcome-members__title">
+											<?php echo cl_translate("{@total_users@} people joined us, now it's your turn", array(
+												"total_users" => cl_html_el("b", (cl_number($cl["total_user"])  . "+"))
+											)); ?>
+										</div>
+										<div class="welcome-members__list">
+											<?php foreach ($cl['follow_suggestion'] as $user_data): ?>
+												<div class="welcome-members__list-item">
+													<a href="<?php echo $user_data["url"] ?>" target="_blank" class="block-link">
+														<img src="<?php echo($user_data["avatar"]); ?>" alt="IMG">
+													</a>
+												</div>
+											<?php endforeach; ?>
+										</div>
+									</div>
+								<?php endif; ?>
+							</div>
+						</div>
+					</div>
+					<div class="col-xxl-4 col-xl-5 col-12 welcome-page__rp-wrapper">
+						<div class="welcome-page__rp">
+							<div class="welcome-page__rp-inner">
+								<div class="welcome-page-form">
+									<div class="welcome-page-form__body">
+										<div class="auth-form">
+											<div class="auth-form-holder">
+												<?php if ($cl["auth_type"] == "login"): ?>
+													<?php echo cl_template('auth/login'); ?>
+												<?php elseif($cl["auth_type"] == "forgot_pass"): ?>
+													<?php echo cl_template('auth/reset_password'); ?>
+												<?php elseif($cl["auth_type"] == "reset_pass" && not_empty($cl['em_code'])): ?>
+													<?php echo cl_template('auth/new_password'); ?>
+												<?php else: ?>
+													<?php if ($cl['config']['user_signup'] == "on" || not_empty($cl["invite_code_status"])): ?>
+														<?php echo cl_template('auth/register'); ?>
+													<?php else: ?>
+														<?php echo cl_template('auth/register_off'); ?>
+													<?php endif; ?>
+												<?php endif; ?>
+											</div>	
+										</div>
+									</div>	
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="welcome-page__footer">
+		<div class="row justify-content-center">
+			<div class="col-xxl-9 col-xl-10 col-12">
+				<div class="welcome-page__bp-wrapper">
+					<div class="welcome-page__bp">
+						<?php echo cl_template('main/footer'); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php echo cl_template('auth/scripts/app_master_script'); ?>
+

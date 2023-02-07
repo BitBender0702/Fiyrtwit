@@ -1,0 +1,25 @@
+// @*************************************************************************@
+// @ Software author: TWT							 @
+// @ Author_url 1: TWT                       @
+// @ Author_url 2: TWT                      @
+// @ Author E-mail: demo@mail.com                                    @
+// @*************************************************************************@
+// @ TWIT - Social Media Platform           @
+// @ Copyright (c) All rights reserved.               @
+// @*************************************************************************@
+
+body.cl-app-confirm_reg{
+	div.confirm-registration{
+		div.timeline-placeholder{
+			padding-bottom: 0px !important;
+
+			div.pl-message{
+				margin-bottom: 0px !important;
+			}
+		}
+
+		form.form{
+			padding: var(--cl-primary-offset-size);
+		}
+	}
+}

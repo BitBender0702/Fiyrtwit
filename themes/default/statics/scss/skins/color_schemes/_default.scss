@@ -1,0 +1,21 @@
+// @*************************************************************************@
+// @ Software author: TWT							 @
+// @ Author_url 1: TWT                       @
+// @ Author_url 2: TWT                      @
+// @ Author E-mail: demo@mail.com                                    @
+// @*************************************************************************@
+// @ TWIT - Social Media Platform           @
+// @ Copyright (c) All rights reserved.               @
+// @*************************************************************************@
+
+body[data-skin="default"]{
+
+	// THEME PRIMARY COLORS
+	
+	$cl-primary-color: #009EFF;
+	$cl-primary-link-color: #1b95e0;
+
+	--cl-primary-color: #{$cl-primary-color};
+	--cl-primary-color-darken-5: #{darken($cl-primary-color, 5)};
+	--cl-primary-link-color: #{$cl-primary-link-color};
+}
